@@ -1,0 +1,51 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title  %}
+My Blog
+
+{% endblock title  %}
+
+{% block content %}
+
+ {% for post in posts  %}
+
+
+<div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+            <a href="post.html">
+              <h2 class="post-title">
+                 <a href ="{{ post.get_absolute_url }}"> {{ post.title }}</a>
+              </h2>
+              <h5 class="post-subtitle">
+               {{ post.body | truncatewords:30 | linebreaks}}
+              </h5>
+            </a>
+            <p class="post-meta">Posted by
+              {{post.author}}
+              on  {{ post.publish }}</p>
+             
+          </div>
+          
+        </div>
+        {% endfor %}
+      
+         
+      
+    
+    
+      </div>
+      {% include "blog/post/pagination.html" with page=page_obj %}
+</div>
+
+
+     
+   
+
+
+
+
+
+Project by Shiva using Django framework
+{% endblock  %}
